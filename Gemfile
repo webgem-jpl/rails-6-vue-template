@@ -28,7 +28,11 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# authentication & authorization
+gem "devise", "~> 4.7"
+
 group :development, :test do
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.1'
@@ -40,6 +44,7 @@ group :development, :test do
 end
 
 group :development do
+
   # Better Errors
   gem "better_errors", "~> 2.9"
   gem "binding_of_caller", "~> 0.8.0"
@@ -55,9 +60,16 @@ group :development do
 end
 
 group :test do
+
+  gem "factory_bot_rails", "~> 6.1"
+  gem "guard-rspec", "~> 4.7"
+  gem "rspec", "~> 3.10"
+  gem "rspec-rails", "~> 4.0"
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
