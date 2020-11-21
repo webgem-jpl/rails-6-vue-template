@@ -1,0 +1,21 @@
+# Configuration.
+
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  Exclude:
+    - '**/Guardfile'
+    - 'bin/bundle'
+
+Style/For:
+  Exclude:
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+  VersionAdded: '0.9'
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
