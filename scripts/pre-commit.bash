@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 echo "Running pre-commit hook"
-./scripts/run-rubocop.bash
 
-# $? stores exit value of the last command
+./scripts/run-tests.bash
 if [ $? -ne 0 ]; then
- echo "Code must be clean before commiting"
+ echo "Tests must pass before committing!"
  exit 1
 fi
