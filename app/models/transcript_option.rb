@@ -1,0 +1,2 @@
+class TranscriptOption < ApplicationRecord
+end

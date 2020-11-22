@@ -13,7 +13,6 @@ RSpec.describe TranscriptOptionsController, type: :controller do
       login_user
 
       it 'returns a success response - when sign in' do
-        # TranscriptConfig.create!(valid_attributes)
         get :index, params: {}, session: valid_session
         expect(response).to be_successful
       end
