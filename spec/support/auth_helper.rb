@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module AuthHelper
   def login_user
     # Before each test, create and login the user
