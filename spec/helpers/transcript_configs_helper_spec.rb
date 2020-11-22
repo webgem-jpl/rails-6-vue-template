@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# frozen_string_literal: true
+
+>>>>>>> cf5e129... scaffold: TranscriptionOption
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes

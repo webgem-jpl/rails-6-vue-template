@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# frozen_string_literal: true
+
+>>>>>>> cf5e129... scaffold: TranscriptionOption
 class TranscriptConfigsController < ApplicationController
   before_action :set_transcript_config, only: %i[show edit update destroy]
 

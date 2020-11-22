@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @transcript_config.name %>
+</p>
+
+<p>
+  <strong>Config:</strong>
+  <%= @transcript_config.config %>
+</p>
+
+<%= link_to 'Edit', edit_transcript_config_path(@transcript_config) %> |
+<%= link_to 'Back', transcript_configs_path %>

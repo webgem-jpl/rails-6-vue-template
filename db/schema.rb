@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_120_182_039) do
+ActiveRecord::Schema.define(version: 20_201_122_174_739) do
+  create_table 'transcript_configs', force: :cascade do |t|
+    t.string 'name'
+    t.text 'config'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['name'], name: 'index_transcript_configs_on_name', unique: true
+  end
+
   create_table 'users', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false

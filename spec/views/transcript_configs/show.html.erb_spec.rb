@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# frozen_string_literal: true
+
+>>>>>>> cf5e129... scaffold: TranscriptionOption
 require 'rails_helper'
 
 RSpec.describe 'transcript_configs/show', type: :view do
