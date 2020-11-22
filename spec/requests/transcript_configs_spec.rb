@@ -18,6 +18,9 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cb7183c... spec: TranscriptConfig controller
 # RSpec.describe '/transcript_configs', type: :request do
 #   # TranscriptConfig. As you add validations to TranscriptConfig, be sure to
 #   # adjust the attributes here as well.
@@ -133,6 +136,7 @@ require 'rails_helper'
 #     end
 #   end
 # end
+<<<<<<< HEAD
 =======
 RSpec.describe '/transcript_configs', type: :request do
   # TranscriptConfig. As you add validations to TranscriptConfig, be sure to
@@ -250,3 +254,5 @@ RSpec.describe '/transcript_configs', type: :request do
   end
 end
 >>>>>>> cf5e129... scaffold: TranscriptionOption
+=======
+>>>>>>> cb7183c... spec: TranscriptConfig controller

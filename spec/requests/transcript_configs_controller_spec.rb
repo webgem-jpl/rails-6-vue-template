@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# frozen_string_literal: true
+
+>>>>>>> cb7183c... spec: TranscriptConfig controller
 require 'rails_helper'
 
 RSpec.describe TranscriptConfigsController, type: :controller do
