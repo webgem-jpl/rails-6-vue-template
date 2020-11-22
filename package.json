@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "Transcript",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
