@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_174827) do
+ActiveRecord::Schema.define(version: 2020_11_24_205417) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
+    t.string "master_record_id"
+    t.string "master_transcript_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "name"
+    t.integer "transcript_option_id", null: false
+    t.integer "project_id"
+    t.integer "pointers"
+    t.string "url"
+    t.text "segments"
+    t.string "transcript_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_records_on_project_id"
+    t.index ["transcript_option_id"], name: "index_records_on_transcript_option_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -35,8 +52,17 @@ ActiveRecord::Schema.define(version: 2020_11_23_174827) do
     t.text "config"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["config"], name: "index_transcript_options_on_config", unique: true
     t.index ["name"], name: "index_transcript_options_on_name", unique: true
+  end
+
+  create_table "transcripts", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "record_id", null: false
+    t.text "segments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_transcripts_on_project_id"
+    t.index ["record_id"], name: "index_transcripts_on_record_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +85,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_174827) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "records", "projects"
+  add_foreign_key "records", "transcript_options"
+  add_foreign_key "transcripts", "projects"
+  add_foreign_key "transcripts", "records"
 end

@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   sequence(:email) do |n|
     "jean-claude#{n}@bro.info"
   end

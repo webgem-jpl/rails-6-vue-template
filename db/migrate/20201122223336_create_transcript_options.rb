@@ -7,6 +7,5 @@ class CreateTranscriptOptions < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     add_index :transcript_options, :name, unique: true
-    add_index :transcript_options, :config, unique: true
   end
 end

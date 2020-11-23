@@ -8,6 +8,7 @@ AllCops:
   Exclude:
     - '**/Guardfile'
     - 'bin/bundle'
+    - 'db/**/*'
 
 Style/For:
   Exclude:
