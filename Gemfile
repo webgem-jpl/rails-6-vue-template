@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # authentication & authorization
 gem 'devise', '~> 4.7'
+gem "rolify", "~> 5.3"
 
 group :development, :test do
   # Security
@@ -37,6 +38,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.1'
+  gem "faker", "~> 2.14"
   gem 'guard-rspec', '~> 4.7'
   gem 'parallel_tests', '~> 3.3'
   gem 'rspec', '~> 3.10'
