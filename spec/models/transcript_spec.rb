@@ -2,7 +2,7 @@ require 'rails_helper'
 
 # t.belongs_to :project, null: false, foreign_key: true
 # t.belongs_to :record, null: false, foreign_key: true
-# t.belongs_to :transcript_option, null: false, foreign_key: true
+# t.belongs_to :config, null: false, foreign_key: true
 # t.string :url
 # t.text :editable
 # t.text :segments
@@ -12,11 +12,11 @@ require 'rails_helper'
 RSpec.describe Transcript, type: :model do
 
   let(:record) { create(:record) }
-  let(:transcript_option){ create(:transcript_option)}
+  let(:config){ create(:config)}
   let(:valid_attributes) {
     { record: record,
     project: record.project,
-    transcript_option: transcript_option,
+    config: config,
     url: 'https://s3.fake-bucket/project/master/transcript'
     }
   }
@@ -44,8 +44,8 @@ RSpec.describe Transcript, type: :model do
 
     it 'has a transcription option' do
       transcript = Transcript.create!(valid_attributes)
-      expect(transcript.transcript_option.class).to eq(TranscriptOption)
-      expect(transcript.transcript_option).to eq(transcript_option)
+      expect(transcript.config.class).to eq(Config)
+      expect(transcript.config).to eq(config)
     end
 
     context "edition:"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TranscriptOptionsController, type: :controller do
+RSpec.describe ConfigsController, type: :controller do
   let(:valid_attributes) do
     { name: 'AWS speech recognition',
       config: { provider: 'AWS' } }

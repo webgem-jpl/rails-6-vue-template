@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :transcript_option do |_n|
+  factory :config do |_n|
     id
     name { "AWS Speech Recognition - #{FactoryBot.generate(:random_id)}" }
     config do

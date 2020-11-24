@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Record, type: :model do
-  let(:transcript_option) { create(:transcript_option) }
+  let(:config) { create(:config) }
   let(:project) { create(:project) }
   let(:valid_attributes) do
     { name: 'record-name',
       project: project,
-      transcript_option: transcript_option,
+      config: config,
       url: "https://s3.fake-bucket.aws.com/project-#{project.id}/master/record" }
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Record, type: :model do
     end
     it 'has a transcript option' do
       record = Record.create!(valid_attributes)
-      expect(record.transcript_option).to be_truthy
+      expect(record.config).to be_truthy
     end
   end
 end

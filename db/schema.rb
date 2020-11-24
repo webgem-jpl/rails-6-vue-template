@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_11_24_232737) do
 
+  create_table "configs", force: :cascade do |t|
+    t.string "name"
+    t.json "config"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_configs_on_name", unique: true
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
@@ -24,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_232737) do
 
   create_table "records", force: :cascade do |t|
     t.string "name"
-    t.integer "transcript_option_id", null: false
+    t.integer "config_id", null: false
     t.integer "project_id"
     t.integer "pointers"
     t.string "url"
@@ -32,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_232737) do
     t.string "transcript_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["config_id"], name: "index_records_on_config_id"
     t.index ["project_id"], name: "index_records_on_project_id"
-    t.index ["transcript_option_id"], name: "index_records_on_transcript_option_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -47,27 +55,19 @@ ActiveRecord::Schema.define(version: 2020_11_24_232737) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "transcript_options", force: :cascade do |t|
-    t.string "name"
-    t.text "config"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_transcript_options_on_name", unique: true
-  end
-
   create_table "transcripts", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "record_id", null: false
-    t.integer "transcript_option_id", null: false
+    t.integer "config_id", null: false
     t.string "url"
     t.json "editable", default: {}, null: false
     t.json "segments", default: {}, null: false
     t.json "metrics", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["config_id"], name: "index_transcripts_on_config_id"
     t.index ["project_id"], name: "index_transcripts_on_project_id"
     t.index ["record_id"], name: "index_transcripts_on_record_id"
-    t.index ["transcript_option_id"], name: "index_transcripts_on_transcript_option_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_232737) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "records", "configs"
   add_foreign_key "records", "projects"
-  add_foreign_key "records", "transcript_options"
+  add_foreign_key "transcripts", "configs"
   add_foreign_key "transcripts", "projects"
   add_foreign_key "transcripts", "records"
-  add_foreign_key "transcripts", "transcript_options"
 end
