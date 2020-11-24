@@ -47,6 +47,13 @@ RSpec.describe Project, type: :model do
       expect(project.master_transcripts.first.class).to be(Transcript)
     end
 
+    it 'has master reference transcript url' do
+      project = Project.create!(valid_attributes)
+      project.master_transcripts << create(:transcript)
+      project.save!
+      expect(project.master_transcripts.first.url).to be_truthy
+    end
+
   end
 
   context 'adding roles:' do

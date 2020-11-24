@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_205417) do
+ActiveRecord::Schema.define(version: 2020_11_24_232737) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -58,11 +58,16 @@ ActiveRecord::Schema.define(version: 2020_11_24_205417) do
   create_table "transcripts", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "record_id", null: false
-    t.text "segments"
+    t.integer "transcript_option_id", null: false
+    t.string "url"
+    t.json "editable", default: {}, null: false
+    t.json "segments", default: {}, null: false
+    t.json "metrics", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_transcripts_on_project_id"
     t.index ["record_id"], name: "index_transcripts_on_record_id"
+    t.index ["transcript_option_id"], name: "index_transcripts_on_transcript_option_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +94,5 @@ ActiveRecord::Schema.define(version: 2020_11_24_205417) do
   add_foreign_key "records", "transcript_options"
   add_foreign_key "transcripts", "projects"
   add_foreign_key "transcripts", "records"
+  add_foreign_key "transcripts", "transcript_options"
 end

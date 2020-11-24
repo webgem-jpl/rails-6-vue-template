@@ -3,7 +3,11 @@ class CreateTranscripts < ActiveRecord::Migration[6.0]
     create_table :transcripts do |t|
       t.belongs_to :project, null: false, foreign_key: true
       t.belongs_to :record, null: false, foreign_key: true
-      t.text :segments
+      t.belongs_to :transcript_option, null: false, foreign_key: true
+      t.string :url
+      t.json :editable, default: {}, null: false
+      t.json :segments, default: {}, null: false
+      t.json :metrics, default: {}, null: false
 
       t.timestamps
     end
