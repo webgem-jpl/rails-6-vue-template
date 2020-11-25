@@ -4,7 +4,7 @@ RSpec.describe Project, type: :model do
   let(:users) { [FactoryBot.create(:user), FactoryBot.create(:user)] }
   let(:name) { "project-name-#{FactoryBot.generate(:random_id)}" }
   let(:valid_attributes) { { name: name, owner: create(:user) } }
-  let (:url) { 'https:/s3.fake-bucket.com/project' }
+  let(:url) { 'https:/s3.fake-bucket.com/project' }
 
   context 'Creation' do
     it 'has a name' do
@@ -24,8 +24,7 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  context "master:" do
-
+  context 'master:' do
     it 'add a master record' do
       project = Project.create!(valid_attributes)
       project.master_records << create(:record)
@@ -53,7 +52,6 @@ RSpec.describe Project, type: :model do
       project.save!
       expect(project.master_transcripts.first.url).to be_truthy
     end
-
   end
 
   context 'adding roles:' do

@@ -29,7 +29,7 @@ class Project < ApplicationRecord
   end
 
   def add_owner_role
-    add_roles([self.owner], :admin)
+    add_roles([owner], :admin)
   end
 
   def users_array(users)

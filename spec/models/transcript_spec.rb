@@ -8,28 +8,25 @@ require 'rails_helper'
 # t.text :segments
 # t.text :metrics
 
-
 RSpec.describe Transcript, type: :model do
-
   let(:record) { create(:record) }
-  let(:config){ create(:config)}
-  let(:valid_attributes) {
+  let(:config) { create(:config) }
+  let(:valid_attributes) do
     { record: record,
-    project: record.project,
-    config: config,
-    url: 'https://s3.fake-bucket/project/master/transcript'
-    }
-  }
-  let (:text) {
-    {}.merge({'words': ['I','think','therefore',',','I','am']})
-  }
-  let (:metrics) {
-    {'confidence_level': 89 }
-  }
+      project: record.project,
+      config: config,
+      url: 'https://s3.fake-bucket/project/master/transcript' }
+  end
+  let(:text) do
+    {}.merge({ 'words': ['I', 'think', 'therefore', ',', 'I', 'am'] })
+  end
+  let(:metrics) do
+    { 'confidence_level': 89 }
+  end
 
-  let(:transcript) {create(:transcript)}
+  let(:transcript) { create(:transcript) }
 
-  context "creation" do
+  context 'creation' do
     it 'has a project' do
       transcript = Transcript.create!(valid_attributes)
       expect(transcript.project.class).to eq(Project)
@@ -48,7 +45,7 @@ RSpec.describe Transcript, type: :model do
       expect(transcript.config).to eq(config)
     end
 
-    context "edition:"
+    context 'edition:'
     it 'editable object' do
       transcript = Transcript.create!(valid_attributes)
       transcript.editable = text
@@ -66,7 +63,5 @@ RSpec.describe Transcript, type: :model do
       transcript.metrics = metrics
       expect(transcript.metrics['confidence_level']).to eq(89)
     end
-
   end
-
 end
